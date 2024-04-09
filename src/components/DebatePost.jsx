@@ -48,6 +48,7 @@ setComments((pre) => (
 ]))
   setInput("")
   setText("")
+  setAnonim(false)
 }
 
   return (
