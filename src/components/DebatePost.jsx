@@ -24,7 +24,7 @@ Form çalışmıyor. Göreviniz, kullanıcı "Gönder "e tıkladığında gönde
   const [input, setInput] = useState("")
   const [text, setText] = useState("")
   const [anonim, setAnonim] = useState(false)
-
+  const [isUserNameRequired, setIsUserNameRequired] = useState(true)
 
 const handleInputChange = (e) => {
   setInput(e.target.value)
@@ -34,6 +34,7 @@ const handleTextChange = (e) => {
 }
 const handleAnonimChange = (e) => {
   setAnonim(e.target.checked)
+  setIsUserNameRequired((pre) => !pre)
 }
 
 const handleSubmit = (e) => {
@@ -49,6 +50,7 @@ setComments((pre) => (
   setInput("")
   setText("")
   setAnonim(false)
+  setIsUserNameRequired(true)
 }
 
   return (
@@ -60,7 +62,7 @@ setComments((pre) => (
           className='text-input'
           type='text'
           name='userName'
-          required
+          required={isUserNameRequired}
           onChange={handleInputChange}
           value={input}
           placeholder='Kullanıcı adı girin.'
@@ -87,3 +89,9 @@ setComments((pre) => (
     </div>
   )
 }
+
+
+// const userNameInput = document.getElementById('userNameInput');
+// if (userNameInput) {
+//   userNameInput.required = !e.target.checked;
+// }
